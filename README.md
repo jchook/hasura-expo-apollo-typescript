@@ -42,6 +42,17 @@ Hasura
 Hasura is written in Haskell and is generally fast / optimized for most tasks.
 [You may need to add indexes](https://github.com/hasura/graphql-engine/issues/6448).
 
+- [Tutorial](https://hasura.io/learn/graphql/hasura/introduction/)
+- [Running Hasura on Docker](https://hasura.io/docs/latest/graphql/core/deployment/deployment-guides/docker.html#deployment-docker)
+- [Migrations](https://hasura.io/docs/latest/graphql/core/migrations/migrations-setup.html#migrations-setup)
+
+
+Curious how I can export the GraphQL schema and re-import it into a fresh
+Hasura instance.
+
+You can install the CLI with `npm i -g hasura-cli` and configure completions
+with, e.g. `hasura completions zsh > ~/.zsh/completion/_hasura`
+
 
 GraphQL
 -------
@@ -120,6 +131,7 @@ Folks recommend [JAMStack](https://jamstack.org/)
 
 Apollo has optimistic updates [built-in](https://www.apollographql.com/docs/react/performance/optimistic-ui/)
 
+
 See Also
 --------
 
@@ -127,4 +139,5 @@ See Also
 - [Codegen GraphQL](https://www.graphql-code-generator.com/docs/plugins/typescript-react-query/)
 - [Tutorial Hasura + Auth0 + Apollo](https://auth0.com/blog/building-a-collaborative-todo-app-with-realtime-graphql-using-hasura/)
 - [Offline First w/ RN + Apollo](https://teamairship.com/offline-first-approach-for-mobile-apps-react-native-and-apollo/)
+- [Global loading indicator w/ Apollo](https://stackoverflow.com/questions/43964957/global-loading-flag-for-apollo-client)
 

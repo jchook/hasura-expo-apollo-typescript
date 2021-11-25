@@ -1,0 +1,5 @@
+set dotenv-load := true
+
+console:
+  hasura console
+

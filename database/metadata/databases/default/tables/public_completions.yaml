@@ -1,0 +1,35 @@
+table:
+  name: completions
+  schema: public
+object_relationships:
+- name: habit
+  using:
+    foreign_key_constraint_on: habit_id
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      habit:
+        user_id:
+          _eq: X-Hasura-User-Id
+    columns:
+    - habit_id
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - created_at
+    - habit_id
+    - id
+    filter:
+      habit:
+        user_id:
+          _eq: X-Hasura-User-Id
+  role: user
+delete_permissions:
+- permission:
+    filter:
+      habit:
+        user_id:
+          _eq: X-Hasura-User-Id
+  role: user

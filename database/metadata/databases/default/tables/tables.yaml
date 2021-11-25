@@ -1,0 +1,3 @@
+- "!include public_completions.yaml"
+- "!include public_habits.yaml"
+- "!include public_users.yaml"

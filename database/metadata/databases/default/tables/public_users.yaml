@@ -1,0 +1,48 @@
+table:
+  name: users
+  schema: public
+array_relationships:
+- name: habits
+  using:
+    foreign_key_constraint_on:
+      column: user_id
+      table:
+        name: habits
+        schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - password
+    - username
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - created_at
+    - id
+    - updated_at
+    - username
+    filter:
+      id:
+        _eq: X-Hasura-User-Id
+  role: user
+update_permissions:
+- permission:
+    check:
+      id:
+        _eq: X-Hasura-User-Id
+    columns:
+    - password
+    - username
+    filter:
+      id:
+        _eq: X-Hasura-User-Id
+  role: user
+delete_permissions:
+- permission:
+    filter:
+      id:
+        _eq: X-Hasura-User-Id
+  role: user
