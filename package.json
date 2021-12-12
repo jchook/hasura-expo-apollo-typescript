@@ -1,0 +1,12 @@
+{
+  "name": "habits",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jchook/hasura-expo-apollo-typescript.git",
+  "author": "Wes Roberts <takq@a.zinc.email>",
+  "license": "MIT",
+  "devDependencies": {
+    "@apollo/rover": "^0.4.1",
+    "apollo": "^2.33.9"
+  }
+}

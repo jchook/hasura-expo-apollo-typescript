@@ -27,6 +27,17 @@ Ideally from this experiment we gain:
 4. Fodder for a good blog post / tutorial / boilerplate / example repo
 
 
+Apollo
+------
+
+Check out [Apollo Client Examples](https://github.com/apollographql/ac3-state-management-examples).
+
+Typing is tricky:
+
+- [TypeGraphQL](https://typegraphql.com/) uses decorators to fix this issue
+- [Apollo Tooling](https://github.com/apollographql/apollo-tooling)
+
+
 React Native Bootstrap
 ----------------------
 
