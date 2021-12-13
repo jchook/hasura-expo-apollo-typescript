@@ -1354,54 +1354,54 @@ export type Users_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
-export type UserHabitsCompletionsQueryVariables = Exact<{
+export type HabitsCompletionsQueryVariables = Exact<{
   since?: InputMaybe<Scalars['timestamptz']>;
 }>;
 
 
-export type UserHabitsCompletionsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', habits: Array<{ __typename?: 'habits', id: any, target: any, title: string, completions: Array<{ __typename?: 'completions', id: any, created_at: any }> }> } | null | undefined };
+export type HabitsCompletionsQuery = { __typename?: 'query_root', habits: Array<{ __typename?: 'habits', id: any, user_id: any, target: any, title: string, completions: Array<{ __typename?: 'completions', id: any, habit_id: any, created_at: any }> }> };
 
 
-export const UserHabitsCompletionsDocument = gql`
-    query UserHabitsCompletions($since: timestamptz = "2021-11-17") {
-  users_by_pk(id: "1") {
-    habits(limit: 50, offset: 0) {
+export const HabitsCompletionsDocument = gql`
+    query HabitsCompletions($since: timestamptz = "2021-11-17") {
+  habits(limit: 50, offset: 0) {
+    id
+    user_id
+    target
+    title
+    completions(limit: 20, where: {created_at: {_gte: $since}}) {
       id
-      target
-      title
-      completions(limit: 20, where: {created_at: {_gte: $since}}) {
-        id
-        created_at
-      }
+      habit_id
+      created_at
     }
   }
 }
     `;
 
 /**
- * __useUserHabitsCompletionsQuery__
+ * __useHabitsCompletionsQuery__
  *
- * To run a query within a React component, call `useUserHabitsCompletionsQuery` and pass it any options that fit your needs.
- * When your component renders, `useUserHabitsCompletionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useHabitsCompletionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHabitsCompletionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useUserHabitsCompletionsQuery({
+ * const { data, loading, error } = useHabitsCompletionsQuery({
  *   variables: {
  *      since: // value for 'since'
  *   },
  * });
  */
-export function useUserHabitsCompletionsQuery(baseOptions?: Apollo.QueryHookOptions<UserHabitsCompletionsQuery, UserHabitsCompletionsQueryVariables>) {
+export function useHabitsCompletionsQuery(baseOptions?: Apollo.QueryHookOptions<HabitsCompletionsQuery, HabitsCompletionsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<UserHabitsCompletionsQuery, UserHabitsCompletionsQueryVariables>(UserHabitsCompletionsDocument, options);
+        return Apollo.useQuery<HabitsCompletionsQuery, HabitsCompletionsQueryVariables>(HabitsCompletionsDocument, options);
       }
-export function useUserHabitsCompletionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserHabitsCompletionsQuery, UserHabitsCompletionsQueryVariables>) {
+export function useHabitsCompletionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HabitsCompletionsQuery, HabitsCompletionsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<UserHabitsCompletionsQuery, UserHabitsCompletionsQueryVariables>(UserHabitsCompletionsDocument, options);
+          return Apollo.useLazyQuery<HabitsCompletionsQuery, HabitsCompletionsQueryVariables>(HabitsCompletionsDocument, options);
         }
-export type UserHabitsCompletionsQueryHookResult = ReturnType<typeof useUserHabitsCompletionsQuery>;
-export type UserHabitsCompletionsLazyQueryHookResult = ReturnType<typeof useUserHabitsCompletionsLazyQuery>;
-export type UserHabitsCompletionsQueryResult = Apollo.QueryResult<UserHabitsCompletionsQuery, UserHabitsCompletionsQueryVariables>;
+export type HabitsCompletionsQueryHookResult = ReturnType<typeof useHabitsCompletionsQuery>;
+export type HabitsCompletionsLazyQueryHookResult = ReturnType<typeof useHabitsCompletionsLazyQuery>;
+export type HabitsCompletionsQueryResult = Apollo.QueryResult<HabitsCompletionsQuery, HabitsCompletionsQueryVariables>;

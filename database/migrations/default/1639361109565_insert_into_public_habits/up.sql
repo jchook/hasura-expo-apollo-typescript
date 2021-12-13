@@ -1,0 +1,1 @@
+INSERT INTO "public"."habits"("id", "title", "target", "created_at", "updated_at", "user_id") VALUES (4, E'Check email', 1, E'2021-12-13T02:05:09.475454+00:00', E'2021-12-13T02:05:09.475454+00:00', 2);
