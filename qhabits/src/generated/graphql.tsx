@@ -1354,6 +1354,13 @@ export type Users_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+export type CompleteHabitMutationVariables = Exact<{
+  habit_id: Scalars['bigint'];
+}>;
+
+
+export type CompleteHabitMutation = { __typename?: 'mutation_root', insert_completions_one?: { __typename?: 'completions', id: any, habit_id: any, created_at: any } | null | undefined };
+
 export type HabitsCompletionsQueryVariables = Exact<{
   since?: InputMaybe<Scalars['timestamptz']>;
 }>;
@@ -1362,6 +1369,41 @@ export type HabitsCompletionsQueryVariables = Exact<{
 export type HabitsCompletionsQuery = { __typename?: 'query_root', habits: Array<{ __typename?: 'habits', id: any, user_id: any, target: any, title: string, completions: Array<{ __typename?: 'completions', id: any, habit_id: any, created_at: any }> }> };
 
 
+export const CompleteHabitDocument = gql`
+    mutation CompleteHabit($habit_id: bigint!) {
+  insert_completions_one(object: {habit_id: $habit_id}) {
+    id
+    habit_id
+    created_at
+  }
+}
+    `;
+export type CompleteHabitMutationFn = Apollo.MutationFunction<CompleteHabitMutation, CompleteHabitMutationVariables>;
+
+/**
+ * __useCompleteHabitMutation__
+ *
+ * To run a mutation, you first call `useCompleteHabitMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCompleteHabitMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [completeHabitMutation, { data, loading, error }] = useCompleteHabitMutation({
+ *   variables: {
+ *      habit_id: // value for 'habit_id'
+ *   },
+ * });
+ */
+export function useCompleteHabitMutation(baseOptions?: Apollo.MutationHookOptions<CompleteHabitMutation, CompleteHabitMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CompleteHabitMutation, CompleteHabitMutationVariables>(CompleteHabitDocument, options);
+      }
+export type CompleteHabitMutationHookResult = ReturnType<typeof useCompleteHabitMutation>;
+export type CompleteHabitMutationResult = Apollo.MutationResult<CompleteHabitMutation>;
+export type CompleteHabitMutationOptions = Apollo.BaseMutationOptions<CompleteHabitMutation, CompleteHabitMutationVariables>;
 export const HabitsCompletionsDocument = gql`
     query HabitsCompletions($since: timestamptz = "2021-11-17") {
   habits(limit: 50, offset: 0) {
