@@ -48,6 +48,7 @@ Frontend
 
 I think we want to go with a react-native-web frontend.
 
+- [Expo Offline Mode Example](https://dev.to/ef/optimizing-react-native-offline-mode-using-apollo-cache-persist-25g8)
 - [Gatsby](https://www.gatsbyjs.com/)
 
 

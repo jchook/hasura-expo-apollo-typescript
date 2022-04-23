@@ -7,14 +7,17 @@ default:
   just --list
 
 codegen:
-  cd "{{justfile_directory()}}/qhabits" && yarn codegen
+  cd "qhabits" && yarn codegen
 
 console:
-  cd "{{justfile_directory()}}/database" && hasura console
+  cd "database" && hasura console
+
+down:
+  cd "database" && docker-compose down
 
 up:
-  cd "{{justfile_directory()}}/database" && docker-compose up -d
-  cd "{{justfile_directory()}}/qhabits" && yarn web
+  cd "database" && docker-compose up -d
+  cd "qhabits" && yarn web
 
 # Hmmm
 # download-schema:

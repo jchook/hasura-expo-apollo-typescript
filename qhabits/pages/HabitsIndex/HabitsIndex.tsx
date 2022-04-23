@@ -1,3 +1,4 @@
+import {GET_HABITS_COMPLETIONS} from "../../operations/queries/HabitsCompletions";
 import React from "react";
 import {
   Text,
@@ -11,14 +12,20 @@ import {
 export interface HabitsIndexProps {}
 
 export default function HabitsIndex(props: HabitsIndexProps) {
-  const { loading, data, error } = useHabitsCompletionsQuery();
+  const { loading, data, error, refetch } = useHabitsCompletionsQuery();
   const [completeHabit, {}] = useCompleteHabitMutation({
-    update(cache, result) {
-      cache.modify({
-        fields: {
-        },
-      })
+    onCompleted() {
+      refetch()
     },
+    refetchQueries: [
+      GET_HABITS_COMPLETIONS
+    ],
+    // update(cache, result) {
+    //   cache.modify({
+    //     fields: {
+    //     },
+    //   })
+    // },
   });
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>Error! {error.message}</Text>;
